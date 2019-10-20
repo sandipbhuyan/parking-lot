@@ -5,6 +5,7 @@ import data.Parking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ParkingAllocate {
     private HashMap<String, Car> parkingLot;
@@ -56,7 +57,7 @@ public class ParkingAllocate {
      *
      * @return boolean
      */
-    public boolean isEmpty()
+    public boolean isNotEmpty()
     {
         return this.getEmptyCount() == 0;
     }
@@ -68,18 +69,19 @@ public class ParkingAllocate {
      */
     public boolean allocateParking(Car car)
     {
-        if(this.isEmpty())
+        if(this.isNotEmpty())
             return false;
 
-        for(int i = 1; i < this.getLimit(); i++)
+        for(int i = 1; i <= this.getLimit(); i++)
         {
             if(this.getParkingLot().get(Integer.toString(i)) != null)
             {
                 this.getParkingLot().put(Integer.toString(i), car);
+                this.setEmptyCount(this.getEmptyCount() - 1);
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -94,6 +96,7 @@ public class ParkingAllocate {
             return false;
 
         this.getParkingLot().put(Integer.toString(place), null);
+        this.setEmptyCount(this.getEmptyCount() + 1);
         return true;
     }
 
@@ -105,6 +108,50 @@ public class ParkingAllocate {
     public HashMap<String, Car> getAllParkingDetails()
     {
         return this.getParkingLot();
+    }
+
+    /**
+     * Get Registration number or slot number according to the color
+     *
+     * @param color String
+     * @param type int 0 -> registration number 1-> slot number
+     *
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> findRegistrationOrSlotNumbersFromColor(String color, int type)
+    {
+        ArrayList<String> redg = new ArrayList<String>();
+        ArrayList<String> slot = new ArrayList<String>();
+        for(int i = 1; i <= this.getParkingLot().size(); i++ )
+        {
+            Car car = this.getParkingLot().get(Integer.toString(i));
+            if(car.getColor().equals(color.toLowerCase()))
+            {
+                redg.add(car.getNumber());
+                slot.add(Integer.toString(i));
+            }
+
+        }
+        return type == 0 ? redg: slot;
+    }
+
+    /**
+     * Find Plot number from redg no
+     *
+     * @param redg int
+     * @return int
+     */
+    public int findSlotNumberFromRedgNo(String redg)
+    {
+        for(int i = 1; i <= this.getParkingLot().size(); i++ )
+        {
+            Car car = this.getParkingLot().get(Integer.toString(i));
+            if(car.getNumber().equals(redg))
+            {
+                return i;
+            }
+        }
+        return 0;
     }
 }
 
