@@ -116,4 +116,15 @@ public class ParkingController {
             System.out.println(num);
         }
     }
+
+    public void showCommands()
+    {
+        System.out.println("create_parking_lot <number> : To form a parking lot of size <number>");
+        System.out.println("park <Registration Number> <Color> - park a car into the nearest parking lot");
+        System.out.println("leave <parking_lot_no> - Remove the car from the perticular slot");
+        System.out.println("status - Parking lot current status");
+        System.out.println("registration_numbers_for_cars_with_colour <color> - get the registration numbers according to color");
+        System.out.println("slot_numbers_for_cars_with_colour <color> - Get the slot numbers according to colors");
+        System.out.println("slot_number_for_registration_number <registration_number> - get the slot numbers according to a registration number");
+    }
 }

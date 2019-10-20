@@ -16,9 +16,11 @@ public class ParkingLot {
     // Infinite Loop until a required solution is not there
     ParkingController parkingController = new ParkingController();
     boolean flag = false;
+    BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
     while(true)
     {
-      BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
+      System.out.println("Run show_commands to get all available opperations");
+      System.out.print("$ ");
       String name = reader.readLine();
       String commands[] = name.split(" ");
       if(commands[0].equals(""))
@@ -78,6 +80,9 @@ public class ParkingLot {
           continue;
         case "exit":
           flag = true;
+          break;
+        case "show_commands":
+          parkingController.showCommands();
           break;
         default:
           System.out.println("Not enough input");
