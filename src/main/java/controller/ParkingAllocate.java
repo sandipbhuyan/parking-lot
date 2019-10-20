@@ -52,28 +52,15 @@ public class ParkingAllocate {
     }
 
     /**
-     * Get the parkingLot is empty or not
-     *
-     * @return boolean
-     */
-    public boolean isNotEmpty()
-    {
-        return this.getEmptyCount() == 0;
-    }
-
-    /**
      * @param car Car
      *
      * @return int
      */
     public int allocateParking(Car car)
     {
-        if(this.isNotEmpty())
-            return 0;
-
         for(int i = 1; i <= this.getLimit(); i++)
         {
-            if(this.getParkingLot().get(Integer.toString(i)) != null)
+            if(this.getParkingLot().get(Integer.toString(i)) == null)
             {
                 this.getParkingLot().put(Integer.toString(i), car);
                 this.setEmptyCount(this.getEmptyCount() - 1);
@@ -102,7 +89,7 @@ public class ParkingAllocate {
     /**
      * Get all parking details
      *
-     * @return
+     * @return HashMap
      */
     public HashMap<String, Car> getAllParkingDetails()
     {
