@@ -19,7 +19,7 @@ public class ParkingLot {
     BufferedReader reader =  new BufferedReader(new InputStreamReader(System.in));
     while(true)
     {
-      System.out.println("Run show_commands to get all available opperations");
+      System.out.println("\nRun show_commands to get all available opperations");
       System.out.print("$ ");
       String name = reader.readLine();
       String commands[] = name.split(" ");

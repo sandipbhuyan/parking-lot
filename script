@@ -1,6 +1,6 @@
-echo "Gradle is running build not"
+echo "Installing Dependencies"
+gradle
+echo "Gradle is running build"
 gradle build
 echo "Running required Unit Test"
 gradle test
-echo "Running the application"
-java -jar build/libs/gojek-parking_lot-0.1.0.jar

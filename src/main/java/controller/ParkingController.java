@@ -119,7 +119,7 @@ public class ParkingController {
 
     public void showCommands()
     {
-        System.out.println("create_parking_lot <number> : To form a parking lot of size <number>");
+        System.out.println("\ncreate_parking_lot <number> : To form a parking lot of size <number>");
         System.out.println("park <Registration Number> <Color> - park a car into the nearest parking lot");
         System.out.println("leave <parking_lot_no> - Remove the car from the perticular slot");
         System.out.println("status - Parking lot current status");
