@@ -1,7 +1,6 @@
 package controller;
 
 import data.Car;
-import data.Parking;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,12 +64,12 @@ public class ParkingAllocate {
     /**
      * @param car Car
      *
-     * @return boolean
+     * @return int
      */
-    public boolean allocateParking(Car car)
+    public int allocateParking(Car car)
     {
         if(this.isNotEmpty())
-            return false;
+            return 0;
 
         for(int i = 1; i <= this.getLimit(); i++)
         {
@@ -78,10 +77,10 @@ public class ParkingAllocate {
             {
                 this.getParkingLot().put(Integer.toString(i), car);
                 this.setEmptyCount(this.getEmptyCount() - 1);
-                return true;
+                return i;
             }
         }
-        return false;
+        return 0;
     }
 
     /**
