@@ -111,6 +111,10 @@ public class ParkingAllocate {
         for(int i = 1; i <= this.getParkingLot().size(); i++ )
         {
             Car car = this.getParkingLot().get(Integer.toString(i));
+            if(car == null)
+            {
+                continue;
+            }
             if(car.getColor().equals(color.toLowerCase()))
             {
                 redg.add(car.getNumber());

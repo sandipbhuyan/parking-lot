@@ -53,32 +53,28 @@ public class ParkingLot {
           parkingController.parkingStatus();
           continue;
         case "registration_numbers_for_cars_with_colour":
-          if(commands.length == 2)
-          {
-            parkingController.findRegistrationOrSlotNumbersFromColor(commands[1],0);
-          }
-          else
+          if(commands.length != 2)
           {
             System.out.println("Not enough input");
+            continue;
           }
+          parkingController.findRegistrationOrSlotNumbersFromColor(commands[1],0);
           continue;
         case "slot_numbers_for_cars_with_colour":
-          if(commands.length == 2)
-          {
-            parkingController.findRegistrationOrSlotNumbersFromColor(commands[1],1);
-          }
-          else
+          if(commands.length != 2)
           {
             System.out.println("Not enough input");
+            continue;
           }
+          parkingController.findRegistrationOrSlotNumbersFromColor(commands[1],1);
+          continue;
         case "slot_number_for_registration_number":
-          if(commands.length == 2)
+          if(commands.length != 2)
           {
-            parkingController.slotNumberFromRegdNo(commands[1]);
-          }
-          else {
             System.out.println("Not enough input");
+            continue;
           }
+          parkingController.slotNumberFromRegdNo(commands[1]);
           continue;
         case "exit":
           flag = true;
