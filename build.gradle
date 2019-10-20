@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'eclipse'
 
 mainClassName = 'gojek.ParkingLot'
 
@@ -11,8 +12,11 @@ repositories {
 
 // tag::jar[]
 jar {
-    baseName = 'jb-hello-world'
+    baseName = 'gojek-parking_lot'
     version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class' : 'gojek.ParkingLot'
+    }
 }
 // end::jar[]
 
